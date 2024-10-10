@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yash.pojo.User;
 import com.yash.service.UserService;
@@ -24,20 +25,33 @@ public class LoginController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    String email = request.getParameter("email");
+	    String password = request.getParameter("password");
 
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		User user = userService.getUser(email, password);
-		
-		PrintWriter out = response.getWriter();
-		if(user.getName() != null) {
-			out.println("User dashboard: " + user.getName());
-		} 
-		else {
-			out.println("Invalid credentials!!!");
-			out.println("Try logging In Again :(");
-		}
+	    User user = userService.getUser(email, password);
+
+	    if (user != null && user.getName() != null) {	        
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("userId", user.getUserId());
+			session.setAttribute("userName", user.getName());
+			session.setAttribute("email", user.getEmail());
+			session.setAttribute("phoneNumber", user.getPhoneNumber());
+			session.setAttribute("address", user.getAddress());
+			System.out.println("user role: " + user.getRole());
+			String userRole = user.getRole();
+			if(userRole.equals("admin")) {
+				response.sendRedirect("AdminDashboard.jsp");
+			} else if(userRole.equals("donor")) {
+				System.out.println("user role: " + user.getRole());
+				response.sendRedirect("UserDashboard.jsp");
+			} else {
+				System.out.println("user role is: " + userRole);
+			}
+	    } else {
+	        request.setAttribute("error", "Invalid credentials!!!");
+	        request.getRequestDispatcher("Login.jsp").forward(request, response);
+	    }
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
