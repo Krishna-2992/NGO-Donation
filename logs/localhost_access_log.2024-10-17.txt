@@ -22,3 +22,8 @@
 0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:43:56 +0530] "GET /NGO-App-IJ/Certificate.jsp HTTP/1.1" 200 716
 0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:44:28 +0530] "POST /NGO-App-IJ/generateCertificate HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:44:28 +0530] "GET /NGO-App-IJ/Certificate.jsp HTTP/1.1" 200 716
+0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:54:07 +0530] "GET /NGO-App-IJ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:54:08 +0530] "GET /NGO-App-IJ/ HTTP/1.1" 200 481
+0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:54:10 +0530] "GET /NGO-App-IJ/Certificate.jsp HTTP/1.1" 200 716
+0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:54:27 +0530] "POST /NGO-App-IJ/generateCertificate HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [17/Oct/2024:17:54:27 +0530] "GET /NGO-App-IJ/Certificate.jsp HTTP/1.1" 200 716
