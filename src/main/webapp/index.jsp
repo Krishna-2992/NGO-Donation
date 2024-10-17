@@ -16,6 +16,7 @@
     <a href = "Login.jsp"> Click to Login </a>
     <br/>
     <a href = "donation.jsp"> Click to goto Donation page </a>
-
+    <br/>
+    <a href = "campaign.jsp"> Click to goto Campaign page </a>
 </body>
 </html>
