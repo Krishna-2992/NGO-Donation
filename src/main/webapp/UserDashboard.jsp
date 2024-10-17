@@ -9,13 +9,8 @@
 
 <body class="bg-gray-100 min-h-screen">
 
-    <a href = "Certificate.jsp"> Click to generate certificate </a>
-    <br/>
-    <a href = "Register.jsp"> Click to Register </a>
-    <br/>
-    <a href = "Login.jsp"> Click to Login </a>
-    <br/>
-    <a href = "donation.jsp"> Click to goto Donation page </a>
+    user dashboard
+
 
 </body>
 </html>
