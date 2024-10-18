@@ -19,7 +19,7 @@
     <br/>
     <a href = "jsp/campaign.jsp"> Click to goto Campaign page </a>
     <br/>
-    <a href = "jsp/payment.jsp"> Click to goto Payment page </a>
+    <a href = "jsp/receiptHome.jsp"> Click to goto Receipt page </a>
 
 </body>
 </html>
