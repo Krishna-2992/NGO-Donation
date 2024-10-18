@@ -41,16 +41,16 @@ public class LoginController extends HttpServlet {
             System.out.println("user role: " + user.getRole());
             String userRole = user.getRole();
             if(userRole.equals("admin")) {
-                response.sendRedirect("AdminDashboard.jsp");
+                response.sendRedirect("jsp/AdminDashboard.jsp");
             } else if(userRole.equals("donor")) {
                 System.out.println("user role: " + user.getRole());
-                response.sendRedirect("UserDashboard.jsp");
+                response.sendRedirect("jsp/UserDashboard.jsp");
             } else {
                 System.out.println("user role is: " + userRole);
             }
         } else {
             request.setAttribute("error", "Invalid credentials!!!");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
         }
     }
 

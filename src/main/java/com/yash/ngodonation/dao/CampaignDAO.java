@@ -2,7 +2,7 @@ package com.yash.ngodonation.dao;
 
 import java.util.*;
 
-import com.yash.ngodonation.pojo.Campaign;
+import com.yash.ngodonation.domain.Campaign;
 
 public interface CampaignDAO 
 {

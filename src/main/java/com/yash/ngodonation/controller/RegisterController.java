@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
         User user = new User(userId, name, password, email, phoneNumber, address, role);
         userService.saveUser(user);
 
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
     }
 
 

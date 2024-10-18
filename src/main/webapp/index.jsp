@@ -9,14 +9,17 @@
 
 <body class="bg-gray-100 min-h-screen">
 
-    <a href = "Certificate.jsp"> Click to generate certificate </a>
+    <a href = "jsp/Certificate.jsp"> Click to generate certificate </a>
     <br/>
-    <a href = "Register.jsp"> Click to Register </a>
+    <a href = "jsp/Register.jsp"> Click to Register </a>
     <br/>
-    <a href = "Login.jsp"> Click to Login </a>
+    <a href = "jsp/Login.jsp"> Click to Login </a>
     <br/>
-    <a href = "donation.jsp"> Click to goto Donation page </a>
+    <a href = "jsp/donation.jsp"> Click to goto Donation page </a>
     <br/>
-    <a href = "campaign.jsp"> Click to goto Campaign page </a>
+    <a href = "jsp/campaign.jsp"> Click to goto Campaign page </a>
+    <br/>
+    <a href = "jsp/payment.jsp"> Click to goto Payment page </a>
+
 </body>
 </html>

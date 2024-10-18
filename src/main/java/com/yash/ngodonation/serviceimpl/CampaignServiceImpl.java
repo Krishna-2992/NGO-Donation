@@ -2,7 +2,7 @@ package com.yash.ngodonation.serviceimpl;
 
 import com.yash.ngodonation.dao.CampaignDAO;
 import com.yash.ngodonation.daoimpl.CampaignDAOImpl;
-import com.yash.ngodonation.pojo.Campaign;
+import com.yash.ngodonation.domain.Campaign;
 import com.yash.ngodonation.service.CampaignService;
 import com.yash.ngodonation.util.JDBCUtil;
 
@@ -27,8 +27,9 @@ public class CampaignServiceImpl implements CampaignService {
         return campaignDAO.getCampaignById(campaignId);
     }
 
+
     @Override
-    public void addCampaign(com.yash.ngodonation.pojo.Campaign campaign) {
+    public void addCampaign(Campaign campaign) {
         campaignDAO.addCampaign(campaign);
     }
 

@@ -2,7 +2,7 @@ package com.yash.ngodonation.controller;
 
 import java.util.List;
 
-import com.yash.ngodonation.pojo.*;
+import com.yash.ngodonation.domain.*;
 import com.yash.ngodonation.service.CampaignService;
 import com.yash.ngodonation.serviceimpl.CampaignServiceImpl;
 

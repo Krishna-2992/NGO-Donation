@@ -2,7 +2,7 @@ package com.yash.ngodonation.service;
 
 import java.util.List;
 
-import com.yash.ngodonation.pojo.*;
+import com.yash.ngodonation.domain.Campaign;
 
 public interface CampaignService 
 {

@@ -1,7 +1,7 @@
 package com.yash.ngodonation.daoimpl;
 
 import com.yash.ngodonation.dao.CampaignDAO;
-import com.yash.ngodonation.pojo.Campaign;
+import com.yash.ngodonation.domain.Campaign;
 import com.yash.ngodonation.util.JDBCUtil;
 
 import java.sql.*;
