@@ -7,12 +7,12 @@ import com.yash.ngodonation.domain.User;
 import com.yash.ngodonation.service.UserService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
-
     public UserServiceImpl() {
         this.userDao = new UserDaoImpl();
     }
@@ -30,21 +30,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String email, String password) {
-        System.out.println("inside getUser");
+        System.out.println("inside getUser service");
         System.out.println("email: " + email);
         System.out.println("password: " + password);
 
-        // Getting all the users
-        ArrayList<User> users = userDao.getAllUser();
+        return userDao.getUser(email, password);
+    }
 
-        for(User user: users) {
-            if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                System.out.println("user found!!");
-                System.out.println("with name as: " + user.getName());
-                return user;
-            }
-        }
-        return new User();
+    @Override
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        users = userDao.getAllUsers();
+        return users;
     }
 
 

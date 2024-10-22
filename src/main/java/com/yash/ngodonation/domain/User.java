@@ -4,8 +4,8 @@ public class User {
 
     private int userId;
     private String name;
-    private String password;
     private String email;
+    private String password;
     private String phoneNumber;
     private String address;
     private String role;
@@ -14,16 +14,24 @@ public class User {
         super();
     }
 
-    public User(int userId, String name, String password, String email, String phoneNumber, String address,
+    public User(int userId, String name, String email, String password, String phoneNumber, String address,
                 String role) {
         super();
         this.userId = userId;
         this.name = name;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.role = role;
+    }
+
+    public User(String name, String email, String password, String phoneNumber, String address) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public int getUserId() {

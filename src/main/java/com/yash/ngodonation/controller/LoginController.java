@@ -25,9 +25,12 @@ public class LoginController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // extract the credentials from the request
+        System.out.println("inside login controller get method");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        // get the user details from the database
         User user = userService.getUser(email, password);
 
         if (user != null && user.getName() != null) {
@@ -38,19 +41,19 @@ public class LoginController extends HttpServlet {
             session.setAttribute("email", user.getEmail());
             session.setAttribute("phoneNumber", user.getPhoneNumber());
             session.setAttribute("address", user.getAddress());
+
             System.out.println("user role: " + user.getRole());
             String userRole = user.getRole();
             if(userRole.equals("admin")) {
                 response.sendRedirect("jsp/AdminDashboard.jsp");
             } else if(userRole.equals("donor")) {
-                System.out.println("user role: " + user.getRole());
                 response.sendRedirect("jsp/UserDashboard.jsp");
             } else {
                 System.out.println("user role is: " + userRole);
             }
         } else {
             request.setAttribute("error", "Invalid credentials!!!");
-            request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
         }
     }
 

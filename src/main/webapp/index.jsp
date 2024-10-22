@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/index.css"> <!-- Link to the external CSS file -->
 </head>
+<body>
 
-<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1 class="navbar-title">NGO Donation</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="jsp/login.jsp" class="button">Login</a>
+            <a href="jsp/register.jsp" class="button">Register</a>
+        </div>
+    </nav>
 
-    <a href = "jsp/Certificate.jsp"> Click to generate certificate </a>
-    <br/>
-    <a href = "jsp/Register.jsp"> Click to Register </a>
-    <br/>
-    <a href = "jsp/Login.jsp"> Click to Login </a>
-    <br/>
-    <a href = "jsp/donation.jsp"> Click to goto Donation page </a>
-    <br/>
-    <a href = "jsp/campaign.jsp"> Click to goto Campaign page </a>
-    <br/>
-    <a href = "jsp/receiptHome.jsp"> Click to goto Receipt page </a>
+    <h1 class="welcome-title">Welcome to the Home Page</h1>
+
+    <a href="jsp/Certificate.jsp" class="button">Generate Certificate</a>
+    <a href="jsp/donation.jsp" class="button">Go to Donation Page</a>
+    <a href="jsp/campaign.jsp" class="button">Go to Campaign Page</a>
+    <a href="jsp/receiptHome.jsp" class="button">Go to Receipt Page</a>
 
 </body>
 </html>

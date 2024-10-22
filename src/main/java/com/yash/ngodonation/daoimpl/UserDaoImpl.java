@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDaoImpl implements UserDao {
@@ -23,31 +24,29 @@ public class UserDaoImpl implements UserDao {
             connection = DBConnection.getConnection();
 
             // creating query
-            String insertionQuery1 = "Insert into User values (?,?,?,?,?,?,?)";
+            String insertionQuery1 = "INSERT INTO User (name, email, password, phoneNumber, address) VALUES (?, ?, ?, ?, ?)";
 
             // prepared stmt
             PreparedStatement pstm = connection.prepareStatement(insertionQuery1);
 
             // setting the value
-            pstm.setInt(1, user.getUserId());
-            pstm.setString(2, user.getName());
+            pstm.setString(1, user.getName());
+            pstm.setString(2, user.getEmail());
             pstm.setString(3, user.getPassword());
-            pstm.setString(4, user.getEmail());
-            pstm.setString(5, user.getPhoneNumber());
-            pstm.setString(6, user.getAddress());
-            pstm.setString(7, user.getRole());
+            pstm.setString(4, user.getPhoneNumber());
+            pstm.setString(5, user.getAddress());
 
             pstm.executeUpdate();
             System.out.println("System updated!!");
 
             DBConnection.closeConnection(connection);
-//
+
         } catch(Exception e) {
             System.out.println("exception occured!! " + e);
         }
     }
 
-    public ArrayList<User> getAllUser() {
+    public List<User> getAllUsers() {
         System.out.println("inside userDAO getAllUsers");
 
         ArrayList<User> users = new ArrayList<User>();
@@ -91,11 +90,44 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+    public User getUser (String email, String password) {
+        System.out.println("inside userDAO getUser ");
+
+        User user = null;
+
+        try {
+            connection = DBConnection.getConnection();
+
+            // Creating the query with placeholders
+            String query = "SELECT * FROM User WHERE email = ? AND password = ?";
+            PreparedStatement pstm = connection.prepareStatement(query);
+
+            // Setting the values for the query
+            pstm.setString(1, email);
+            pstm.setString(2, password);
+
+            // Executing the query
+            ResultSet data = pstm.executeQuery();
+
+            // If a user is found, create the user object
+            if (data.next()) {
+                int userId = data.getInt("userId");
+                String name = data.getString("name");
+                String phoneNumber = data.getString("phoneNumber");
+                String address = data.getString("address");
+                String role = data.getString("role");
+
+                // Create the user object
+                user = new User(userId, name, password, email, phoneNumber, address, role);
+            } else {
+                System.out.println("No user found with the provided email and password.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user; // Return the user object or null if not found
     }
-
-
 
 }

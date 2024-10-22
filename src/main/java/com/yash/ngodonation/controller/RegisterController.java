@@ -22,19 +22,15 @@ public class RegisterController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int userId = 1;
         String name = request.getParameter("name");
-        String password = request.getParameter("password");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
         String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
-        String role = "donor";
 
-        User user = new User(userId, name, password, email, phoneNumber, address, role);
+        User user = new User(name, email, password, phoneNumber, address);
         userService.saveUser(user);
 
-        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-
-
 }
