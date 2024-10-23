@@ -21,6 +21,7 @@ public class AdminController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private UserService userService;
+    int tempCount = 0;
 
     public void init() {
         this.userService = new UserServiceImpl();
@@ -48,6 +49,9 @@ public class AdminController extends HttpServlet {
     }
 
     public void getAllUsers(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("tempcount: " + tempCount++);
+
         List<User> usersList = null;
         usersList = userService.getAllUsers();
 
@@ -59,6 +63,7 @@ public class AdminController extends HttpServlet {
         // setting the userList in a variable
         HttpSession session = request.getSession();
         session.setAttribute("usersList", usersList);
+        session.setAttribute("showAllDonorTable" , true);
     }
 
 }

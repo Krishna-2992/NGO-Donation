@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../styles/adminDashboard.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="../styles/adminDashboard.css">
 </head>
 <body>
 
@@ -14,6 +14,9 @@
         <h1 class="dashboard-title">Admin Dashboard</h1>
 
         <%
+            List<User> usersList = (List<User>) session.getAttribute("usersList");
+            boolean showAllDonorTable = false;
+
             String userName = (String) session.getAttribute("userName");
             boolean userPresent = false;
             if (userName != null) {
@@ -24,19 +27,13 @@
             }
         %>
 
+        <% if (usersList != null && !usersList.isEmpty()) { %>
+            <jsp:include page='allUsersTable.jsp' />
+        <% } %>
+
         <form action="../adminController?action=getAllDonors" method="POST">
             <button type="submit" class="btn">Get All Donors</button>
         </form>
-        <%
-            List<User> usersList = (List<User>) session.getAttribute("usersList");
-            if (usersList != null && !usersList.isEmpty()) {
-                out.println("<ul class='user-list'>"); // Start an unordered list
-                for (User  user : usersList) {
-                    out.println("<li>" + user.getName() + " - " + user.getEmail() + "</li>"); // Display user name and email
-                }
-                out.println("</ul>"); // End the unordered list
-            }
-        %>
 
         <form action="../adminController?action=getDonorById" method="POST">
             <input type="text" name="userIdToSearch" placeholder="11">
