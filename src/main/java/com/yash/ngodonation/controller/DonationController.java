@@ -1,6 +1,9 @@
-
 package com.yash.ngodonation.controller;
+
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,32 +20,39 @@ public class DonationController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        // Extract parameters from the request
-        int userId = Integer.parseInt(req.getParameter("userId"));
-        int donationId = Integer.parseInt(req.getParameter("donationId"));
-        double donationAmount = Double.parseDouble(req.getParameter("donationAmount"));
-        String donationDate = req.getParameter("donationDate");
-
-        // Create a Donation object and set its properties
-        Donation donation = new Donation();
-        donation.setUserId(userId);
-        donation.setDonationId(donationId);
-        donation.setDonationAmount(donationAmount);
-        //donation.setDonationDate(donationDate);
-
-
         try {
-            // Create a DAO instance and add the donation
+            int userId = Integer.parseInt(req.getParameter("userId"));
+            int donationId = Integer.parseInt(req.getParameter("donationId"));
+            double donationAmount = Double.parseDouble(req.getParameter("donationAmount"));
+            String donationDateParam = req.getParameter("donationDate");
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date donationDate = dateFormat.parse(donationDateParam);
+
+            Donation donation = new Donation();
+            donation.setUserId(userId);
+            donation.setDonationId(donationId);
+            donation.setDonationAmount(donationAmount);
+            donation.setDonationDate(donationDate);
+
+
             DonationDao dao = new DonationDaoImpl();
             dao.addDonation(donation);
             // Redirect to a success page
-            res.sendRedirect("donationSuccess.jsp");
+            res.sendRedirect("Success.jsp");
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+            req.setAttribute("errorMessage", "Invalid date format. Please use 'yyyy-MM-dd'.");
+            req.getRequestDispatcher("index.jsp").forward(req, res);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            req.setAttribute("errorMessage", "Invalid number format. Please check your input.");
+            req.getRequestDispatcher("index.jsp").forward(req, res);
         } catch (Exception e) {
             e.printStackTrace();
-            // Redirect to a failure page
-            res.sendRedirect("donationFail.jsp");
+            req.setAttribute("errorMessage", "An unexpected error occurred. Please try again.");
+            req.getRequestDispatcher("index.jsp").forward(req, res);
         }
     }
 }

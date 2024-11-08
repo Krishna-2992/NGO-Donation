@@ -3,5 +3,15 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+  <welcome-file>donation.jsp</welcome-file>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>DonationController</servlet-name>
+    <servlet-class>com.yash.ngodonation.controller.DonationController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DonationController</servlet-name>
+    <url-pattern>/Donation</url-pattern>
+  </servlet-mapping>
 </web-app>

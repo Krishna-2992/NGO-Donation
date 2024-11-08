@@ -34,7 +34,7 @@ public class Donation {
         this.donationAmount = donationAmount;
     }
 
-    public Date getDonationDate(Date donationDate) {
+    public Date getDonationDate() {
         return donationDate;
     }
 
