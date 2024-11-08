@@ -36,3 +36,9 @@ h1 {
     position: sticky;
     top: 0; /* Makes the header sticky */
 }
+
+button {
+    border: none;
+    background-color: white;
+    text-color: blue;
+}

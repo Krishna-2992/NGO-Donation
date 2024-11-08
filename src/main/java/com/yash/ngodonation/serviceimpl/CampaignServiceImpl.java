@@ -13,8 +13,7 @@ public class CampaignServiceImpl implements CampaignService {
     private CampaignDAO campaignDAO;
 
     public CampaignServiceImpl() {
-        JDBCUtil jdbcUtil = new JDBCUtil();
-        campaignDAO = new CampaignDAOImpl(jdbcUtil);
+        campaignDAO = new CampaignDAOImpl();
     }
 
     @Override
@@ -26,7 +25,6 @@ public class CampaignServiceImpl implements CampaignService {
     public Campaign getCampaignById(int campaignId) {
         return campaignDAO.getCampaignById(campaignId);
     }
-
 
     @Override
     public void addCampaign(Campaign campaign) {

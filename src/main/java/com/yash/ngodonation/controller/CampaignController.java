@@ -1,36 +1,38 @@
-package com.yash.ngodonation.controller;
+    package com.yash.ngodonation.controller;
 
-import java.util.List;
+    import com.yash.ngodonation.domain.Campaign;
+    import com.yash.ngodonation.service.CampaignService;
+    import com.yash.ngodonation.serviceimpl.CampaignServiceImpl;
 
-import com.yash.ngodonation.domain.*;
-import com.yash.ngodonation.service.CampaignService;
-import com.yash.ngodonation.serviceimpl.CampaignServiceImpl;
+    import javax.servlet.annotation.WebServlet;
+    import javax.servlet.http.HttpServlet;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import javax.servlet.http.HttpSession;
+    import java.io.IOException;
+    import java.util.ArrayList;
+    import java.util.List;
 
-public class CampaignController 
-{
-    private CampaignService campaignService;
 
-    public CampaignController() {
-        campaignService = new CampaignServiceImpl();
+    @WebServlet("/campaignController")
+    public class CampaignController extends HttpServlet {
+        private static final long serialVersionUID = 1L;
+        private CampaignService campaignService;
+
+        public void init() {
+            this.campaignService = new CampaignServiceImpl();
+        }
+
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            System.out.println("inside campaign controller");
+
+            // getting all campaigns
+            List<Campaign> campaignList = campaignService.getAllCampaigns();
+            for(Campaign campaign: campaignList) {
+                System.out.println(campaign);
+            }
+            HttpSession session = request.getSession();
+            session.setAttribute("campaignList", campaignList);
+            response.sendRedirect("index.jsp");
+        }
     }
-
-    public List<Campaign> getAllCampaigns() {
-        return campaignService.getAllCampaigns();
-    }
-
-    public Campaign getCampaignById(int campaignId) {
-        return campaignService.getCampaignById(campaignId);
-    }
-
-    public void addCampaign(Campaign campaign) {
-        campaignService.addCampaign(campaign);
-    }
-
-    public void updateCampaign(Campaign campaign) {
-        campaignService.updateCampaign(campaign);
-    }
-
-    public void deleteCampaign(int campaignId) {
-        campaignService.deleteCampaign(campaignId);
-    }
-}

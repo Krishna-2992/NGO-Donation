@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="styles/index.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="../allUserTable.css">
+
 </head>
 <body>
 
@@ -14,17 +16,17 @@
             <h1 class="navbar-title">NGO Donation</h1>
         </div>
         <div class="navbar-right">
-            <a href="jsp/login.jsp" class="button">Login</a>
+            <a href="pages/login.jsp" class="button">Login</a>
             <a href="jsp/register.jsp" class="button">Register</a>
         </div>
     </nav>
 
     <h1 class="welcome-title">Welcome to the Home Page</h1>
 
-    <a href="jsp/Certificate.jsp" class="button">Generate Certificate</a>
-    <a href="jsp/donation.jsp" class="button">Go to Donation Page</a>
-    <a href="jsp/campaign.jsp" class="button">Go to Campaign Page</a>
-    <a href="jsp/receiptHome.jsp" class="button">Go to Receipt Page</a>
+    <form method="post" action="campaignController">
+        <input type="submit" class="button" value="See campaign list">
+    </form>
+    <jsp:include page='components/allCampaignsTable.jsp' />
 
 </body>
 </html>

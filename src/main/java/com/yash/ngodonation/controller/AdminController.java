@@ -21,7 +21,6 @@ public class AdminController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private UserService userService;
-    int tempCount = 0;
 
     public void init() {
         this.userService = new UserServiceImpl();
@@ -42,16 +41,11 @@ public class AdminController extends HttpServlet {
                 break;
         }
 
-
-
-        response.sendRedirect("jsp/AdminDashboard.jsp");
+        response.sendRedirect("pages/AdminDashboard.jsp");
 //        request.getRequestDispatcher("jsp/AdminDashboard.jsp").forward(request, response);
     }
 
     public void getAllUsers(HttpServletRequest request, HttpServletResponse response) {
-
-        System.out.println("tempcount: " + tempCount++);
-
         List<User> usersList = null;
         usersList = userService.getAllUsers();
 
@@ -65,5 +59,4 @@ public class AdminController extends HttpServlet {
         session.setAttribute("usersList", usersList);
         session.setAttribute("showAllDonorTable" , true);
     }
-
 }

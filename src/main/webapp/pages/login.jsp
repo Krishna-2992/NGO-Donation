@@ -10,10 +10,11 @@
     <div class="container">
         <h1 class="title">Welcome Back</h1>
         <form id="loginForm" class="form" action="../login" method="post">
-            <input type="email" name="email" placeholder="Email" value="Shreyash@yash.com" required class="input">
-            <input type="password" name="password" placeholder="Password" value="Shreyash@123" required class="input">
+            <input type="email" name="email" placeholder="Email" value="Krishna@yash.com" required class="input">
+            <input type="password" name="password" placeholder="Password" value="Krishna@12345" required class="input">
             <button type="submit" class="btn">Login</button>
         </form>
+
         <p class="signup-text">
             Don't have an account? <a href="#" class="signup-link">Sign Up</a>
         </p>

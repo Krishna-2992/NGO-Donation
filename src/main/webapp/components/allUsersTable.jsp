@@ -13,9 +13,8 @@
     <% List<User> usersList = (List<User>) session.getAttribute("usersList");%>
 
     <h1>Employee Information</h1>
-
     <% if (usersList != null && !usersList.isEmpty()) { %>
-        <table class="user-table">
+        <table id="donorsTable" class="user-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -42,6 +41,7 @@
     <% } else { %>
         <p>No employee information available.</p>
     <% } %>
+
 
 </body>
 </html>

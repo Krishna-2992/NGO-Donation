@@ -6,14 +6,12 @@ public class Campaign
     private int campaignId;
     private String title;
     private String description;
-    private String fundRaise;
+    private String fundRaised;
     private String targetAmount;
     private String startDate;
     private String endDate;
 
-    // getters and setters
-    public int getCampaignId() 
-    {
+    public int getCampaignId() {
         return campaignId;
     }
 
@@ -37,12 +35,12 @@ public class Campaign
         this.description = description;
     }
 
-    public String getFundRaise() {
-        return fundRaise;
+    public String getFundRaised() {
+        return fundRaised;
     }
 
-    public void setFundRaise(String fundRaise) {
-        this.fundRaise = fundRaise;
+    public void setFundRaised(String fundRaised) {
+        this.fundRaised = fundRaised;
     }
 
     public String getTargetAmount() {
@@ -68,5 +66,17 @@ public class Campaign
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Campaign{" +
+                "campaignId=" + campaignId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", fundRaised='" + fundRaised + '\'' +
+                ", targetAmount='" + targetAmount + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
+    }
 }

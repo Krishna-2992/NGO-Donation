@@ -28,7 +28,7 @@
         %>
 
         <% if (usersList != null && !usersList.isEmpty()) { %>
-            <jsp:include page='allUsersTable.jsp' />
+            <jsp:include page='../components/allUsersTable.jsp' />
         <% } %>
 
         <form action="../adminController?action=getAllDonors" method="POST">
