@@ -39,7 +39,7 @@ public class DonationController extends HttpServlet {
             DonationDao dao = new DonationDaoImpl();
             dao.addDonation(donation);
             // Redirect to a success page
-            res.sendRedirect("Success.jsp");
+            res.sendRedirect("payment.jsp");
 
         } catch (ParseException e) {
             e.printStackTrace();
